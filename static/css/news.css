@@ -1,0 +1,42 @@
+.new {
+    width: 90%;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+    padding: 20px;
+    border-radius: 15px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#commentForm {
+    width: 70%;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+    padding: 20px;
+    border-radius: 15px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.comment {
+
+    width: 80%;
+
+    margin: 20px auto;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+h4 {
+    text-align: center;
+}

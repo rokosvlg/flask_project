@@ -1,0 +1,11 @@
+* {
+    text-align: center;
+}
+
+#content {
+    min-height:80%;
+}
+
+#footer {
+    height: 10%;
+}

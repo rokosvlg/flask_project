@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block head_block %}
+{{ super() }}
+<link href="../static/css/news.css" rel="stylesheet">
+<link href="/static/css/news.css" rel="stylesheet">
+<title>{{ news.title if news else "Новость не найдена" }}</title>
+{% endblock %}
+
+{% block body_block %}
+{% if news %}
+    <div class="container mt-5" id="postsContainer">
+    <div class="row">
+    {% for new in news %}
+        <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{new.title}}</h5>
+            <h6 class="card-time">{{new.date}}</h6>
+            <p class="card-text">{{new.author}}</p>
+            <a href="/news/{{new.id}}" class="btn btn-primary">К новости</a>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+{% endif %}
+{% endblock %}

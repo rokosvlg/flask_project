@@ -1,0 +1,57 @@
+﻿{% extends 'main.html' %}
+
+{% block head_block %}
+{{ super() }}
+<link href="../static/css/news.css" rel="stylesheet">
+<link href="/static/css/news.css" rel="stylesheet">
+<title>{{ news.title if news else "Новость не найдена" }}</title>
+{% endblock %}
+
+{% block body_block %}
+{% if news %}
+<div class="new">
+    <h1>{{ news.title }}</h1>
+    <p>{{ news.text }}</p>
+    <small>Дата публикации: {{ news.date }}</small><br>
+    <small>Автор: {{ news.author.name }}</small>
+</div>
+{% else %}
+<div class="new">
+    <h1>Новость не найдена</h1>
+    <p>Извините, запрашиваемая новость не доступна.</p>
+</div>
+{% endif %}
+
+<form id="commentForm" action="{{ url_for('add_comment', news_id=news.id) }}" method="post">
+    {% if current_user.is_authenticated %}
+    <div class="mb-3">
+        <label for="commentContent" class="form-label">Ваш комментарий</label>
+        <textarea class="form-control" id="commentContent" name="commentContent" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        Чтобы оставить комментарий, пожалуйста, <a href="/login">войдите в систему</a>.
+    </div>
+    {% endif %}
+</form>
+
+<div id="commentsSection" class="mt-4">
+    <h4>Комментарии</h4>
+    <div id="comments">
+        {% if comments %}
+            {% for comment in comments %}
+                <div class="comment">
+                    <strong>{{ comment.author.name }}</strong>
+                    <p>{{ comment.text }}</p>
+                    <small>Дата: {{ comment.date }}</small>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Комментариев пока нет.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
